@@ -6,6 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <script>
+            name = oForm.elements["name"].value;
+            email = oForm.elements["email"].value;
+            message = oForm.elements["message"].value;
+            var checkedValue = document.querySelector('.messageCheckbox:checked').value;
+        </script>
     </head>
     <body class="is-preload">
 
@@ -59,6 +65,14 @@
                                         <div class="field">
                                             <textarea name="message" id="message" placeholder="Message"></textarea>
                                         </div>
+                                    </div>
+                                    <div class="col-6 col-12-small">
+                                        <input type="checkbox" id="demo-copy" name="demo-copy">
+                                        <label for="demo-copy">Email me a copy</label>
+                                    </div>
+                                    <div class="col-6 col-12-small">
+                                        <input type="checkbox" id="demo-human" name="demo-human" checked>
+                                        <label for="demo-human">Not a robot</label>
                                     </div>
                                     <ul class="actions">
                                         <li><input type="submit" value="Send" class="primary" /></li>
