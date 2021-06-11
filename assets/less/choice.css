@@ -17,6 +17,145 @@
   font-weight: 900;
   src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlxdr.ttf) format('truetype');
 }
+html,
+body,
+div,
+span,
+h1,
+h2,
+p,
+a,
+img,
+article,
+header,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+header,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  -webkit-text-size-adjust: none;
+}
+/* Basic */
+@-ms-viewport {
+  width: device-width;
+}
+body {
+  -ms-overflow-style: scrollbar;
+}
+@media screen and (max-width: 480px) {
+  html,
+  body {
+    min-width: 320px;
+  }
+}
+html {
+  box-sizing: border-box;
+}
+* ::before,
+* ::after {
+  box-sizing: inherit;
+}
+body {
+  background: #ffffff;
+}
+body .is-preload * ::before,
+body .is-preload * ::after {
+  -moz-animation: none !important;
+  -webkit-animation: none !important;
+  -ms-animation: none !important;
+  animation: none !important;
+  -moz-transition: none !important;
+  -webkit-transition: none !important;
+  -ms-transition: none !important;
+  transition: none !important;
+}
+/* Type */
+body {
+  color: #585858;
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 16pt;
+  font-weight: 300;
+  line-height: 1.75;
+}
+@media screen and (max-width: 1680px) {
+  body {
+    font-size: 14pt;
+  }
+}
+@media screen and (max-width: 1280px) {
+  body {
+    font-size: 12pt;
+  }
+}
+a {
+  -moz-transition: border-bottom-color 0.2s ease, color 0.2s ease;
+  -webkit-transition: border-bottom-color 0.2s ease, color 0.2s ease;
+  -ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
+  transition: border-bottom-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  color: #585858;
+  border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
+}
+a:hover {
+  border-bottom-color: transparent;
+  color: #f2849e !important;
+}
+p {
+  margin: 0 0 2em 0;
+}
+h1 {
+  font-size: 2.75em;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 1em 0;
+  letter-spacing: -0.035em;
+}
+h1 a {
+  color: inherit;
+}
+@media screen and (max-width: 736px) {
+  h1 {
+    font-size: 2em;
+    margin: 0 0 1em 0;
+  }
+}
+@media screen and (max-width: 360px) {
+  h1 {
+    font-size: 1.75em;
+  }
+}
+h2 {
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0 0 2em 0;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 1.1em;
+}
+h2 a {
+  color: inherit;
+}
+@media screen and (max-width: 980px) {
+  h1 br,
+  h2 br {
+    display: none;
+  }
+}
+@media screen and (max-width: 736px) {
+  h2 {
+    font-size: 1em;
+  }
+}
 /* Header */
 #header {
   padding: 8em 0 0.1em 0;
@@ -44,11 +183,8 @@
   width: 2em;
   height: 2em;
 }
-/*
-    @media screen and (max-width: 736px) {
-
-        #header {
-            padding: 4em 0 0.1em 0 ;
-        }
-    }
-*/
+@media screen and (max-width: 736px) {
+  #header {
+    padding: 4em 0 0.1em 0;
+  }
+}
