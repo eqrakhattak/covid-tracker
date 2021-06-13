@@ -1,28 +1,51 @@
 @import "fontawesome-all.min.css";
 @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900";
 
-/* Basic */
-html {
+/* Mixins */
+@text-color : #585858;
+.basic{
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+}
+.preload-animation{
+	-moz-animation: none;
+	-webkit-animation: none;
+	-ms-animation: none;
+	animation: none;
+	-moz-transition: none;
+	-webkit-transition: none;
+	-ms-transition: none;
+	transition: none;
+}
+.transform (@scale) {
+	-moz-transform: scale(@scale);
+	-webkit-transform: scale(@scale);
+	-ms-transform: scale(@scale);
+	transform: scale(@scale);
+}
+.transition (@seconds) {
+	-moz-transition: border-bottom-color @seconds ease, color @seconds ease;
+	-webkit-transition: border-bottom-color @seconds ease, color @seconds ease;
+	-ms-transition: border-bottom-color @seconds ease, color @seconds ease;
+	transition: border-bottom-color @seconds ease, color @seconds ease;
+}
+
+/* Type */
+html {
+	.basic;
 	box-sizing: border-box;
 }
 body {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 	line-height: 1;
 	-webkit-text-size-adjust: none;
 	-ms-overflow-style: scrollbar;
 	background: #ffffff;
-	color: #585858;
+	color: @text-color;
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
 	font-size: 16pt;
 	font-weight: 300;
@@ -32,10 +55,8 @@ body {
 			article {
 				&:hover {
 					>.image {
-						-moz-transform: scale(1.1);
-						-webkit-transform: scale(1.1);
-						-ms-transform: scale(1.1);
-						transform: scale(1.1);
+						.transform(1.1);
+
 						&:before {
 							background-color: #333333;
 							opacity: 0.35;
@@ -44,39 +65,20 @@ body {
 							opacity: 0;
 						}
 					}
-					.content {
-						max-height: 15em;
-						opacity: 1;
-					}
 				}
 			}
 		}
 	}
 }
 div {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 }
 span {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 }
 
 h1 {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 	font-size: 2.75em;
 	font-weight: 700;
 	line-height: 1.3;
@@ -87,12 +89,7 @@ h1 {
 	}
 }
 h2 {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 	font-weight: 900;
 	line-height: 1.5;
 	margin: 0 0 2em 0;
@@ -103,29 +100,11 @@ h2 {
 		color: inherit;
 	}
 }
-p {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	margin: 0 0 2em 0;
-}
-
 a {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	-moz-transition: border-bottom-color 0.2s ease, color 0.2s ease;
-	-webkit-transition: border-bottom-color 0.2s ease, color 0.2s ease;
-	-ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
-	transition: border-bottom-color 0.2s ease, color 0.2s ease;
+	.basic;
+	.transition (0.2s);
 	text-decoration: none;
-	color: #585858;
+	color: @text-color;
 	border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
 	&:hover {
 		border-bottom-color: transparent;
@@ -134,40 +113,22 @@ a {
 }
 
 img {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 }
 article {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 	display: block;
 }
 header {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 	display: block;
 }
 section {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	.basic;
 	display: block;
 }
+
+/* Basic */
 @-ms-viewport {
 	width: device-width;
 }
@@ -183,41 +144,17 @@ section {
 }
 body.is-preload {
 	* {
-		-moz-animation: none !important;
-		-webkit-animation: none !important;
-		-ms-animation: none !important;
-		animation: none !important;
-		-moz-transition: none !important;
-		-webkit-transition: none !important;
-		-ms-transition: none !important;
-		transition: none !important;
+		.preload-animation !important;
 		&:before {
-			-moz-animation: none !important;
-			-webkit-animation: none !important;
-			-ms-animation: none !important;
-			animation: none !important;
-			-moz-transition: none !important;
-			-webkit-transition: none !important;
-			-ms-transition: none !important;
-			transition: none !important;
+			.preload-animation !important;
 		}
 		&:after {
-			-moz-animation: none !important;
-			-webkit-animation: none !important;
-			-ms-animation: none !important;
-			animation: none !important;
-			-moz-transition: none !important;
-			-webkit-transition: none !important;
-			-ms-transition: none !important;
-			transition: none !important;
+			.preload-animation !important;
 		}
 	}
 	.tiles {
 		article {
-			-moz-transform: scale(0.9);
-			-webkit-transform: scale(0.9);
-			-ms-transform: scale(0.9);
-			transform: scale(0.9);
+			.transform(0.9);
 			opacity: 0;
 		}
 	}
@@ -246,10 +183,7 @@ body.is-preload {
 	position: relative;
 	margin: -2.5em 0 0 -2.5em;
 	article {
-		-moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
-		-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-		-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
-		transition: transform 0.5s ease, opacity 0.5s ease;
+		.transition(0.5s);
 		position: relative;
 		width: calc(33.33333% - 2.5em);
 		margin: 2.5em 0 0 2.5em;
@@ -269,10 +203,7 @@ body.is-preload {
 			}
 			&:before {
 				pointer-events: none;
-				-moz-transition: background-color 0.5s ease, opacity 0.5s ease;
-				-webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
-				-ms-transition: background-color 0.5s ease, opacity 0.5s ease;
-				transition: background-color 0.5s ease, opacity 0.5s ease;
+				.transition(0.5s);
 				content: '';
 				display: block;
 				position: absolute;
@@ -322,10 +253,7 @@ body.is-preload {
 			-webkit-justify-content: center;
 			-ms-justify-content: center;
 			justify-content: center;
-			-moz-transition: background-color 0.5s ease, -moz-transform 0.5s ease;
-			-webkit-transition: background-color 0.5s ease, -webkit-transform 0.5s ease;
-			-ms-transition: background-color 0.5s ease, -ms-transform 0.5s ease;
-			transition: background-color 0.5s ease, transform 0.5s ease;
+			.transition(0.5s);
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -474,10 +402,7 @@ body.is-preload {
 			margin: 1.25em 0 0 1.25em;
 			&:hover {
 				>.image {
-					-moz-transform: scale(1.0);
-					-webkit-transform: scale(1.0);
-					-ms-transform: scale(1.0);
-					transform: scale(1.0);
+					.transform(1.0);
 				}
 			}
 		}

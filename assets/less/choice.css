@@ -17,7 +17,26 @@
   font-weight: 900;
   src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlxdr.ttf) format('truetype');
 }
-/* Basic */
+/* Mixins */
+.basic {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+.preload-animation {
+  -moz-animation: none;
+  -webkit-animation: none;
+  -ms-animation: none;
+  animation: none;
+  -moz-transition: none;
+  -webkit-transition: none;
+  -ms-transition: none;
+  transition: none;
+}
+/* Type */
 html {
   margin: 0;
   padding: 0;
@@ -56,10 +75,6 @@ body:not(.is-touch) .tiles article:hover > .image:before {
 }
 body:not(.is-touch) .tiles article:hover > .image:after {
   opacity: 0;
-}
-body:not(.is-touch) .tiles article:hover .content {
-  max-height: 15em;
-  opacity: 1;
 }
 div {
   margin: 0;
@@ -109,15 +124,6 @@ h2 {
 }
 h2 a {
   color: inherit;
-}
-p {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  margin: 0 0 2em 0;
 }
 a {
   margin: 0;
@@ -173,6 +179,7 @@ section {
   vertical-align: baseline;
   display: block;
 }
+/* Basic */
 @-ms-viewport {
   width: device-width;
 }
@@ -246,10 +253,10 @@ body.is-preload .tiles article {
   margin: -2.5em 0 0 -2.5em;
 }
 .tiles article {
-  -moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
-  -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-  -ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  -moz-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  -webkit-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  -ms-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  transition: border-bottom-color 0.5s ease, color 0.5s ease;
   position: relative;
   width: calc(33.33333% - 2.5em);
   margin: 2.5em 0 0 2.5em;
@@ -271,10 +278,10 @@ body.is-preload .tiles article {
 }
 .tiles article > .image:before {
   pointer-events: none;
-  -moz-transition: background-color 0.5s ease, opacity 0.5s ease;
-  -webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
-  -ms-transition: background-color 0.5s ease, opacity 0.5s ease;
-  transition: background-color 0.5s ease, opacity 0.5s ease;
+  -moz-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  -webkit-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  -ms-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  transition: border-bottom-color 0.5s ease, color 0.5s ease;
   content: '';
   display: block;
   position: absolute;
@@ -323,10 +330,10 @@ body.is-preload .tiles article {
   -webkit-justify-content: center;
   -ms-justify-content: center;
   justify-content: center;
-  -moz-transition: background-color 0.5s ease, -moz-transform 0.5s ease;
-  -webkit-transition: background-color 0.5s ease, -webkit-transform 0.5s ease;
-  -ms-transition: background-color 0.5s ease, -ms-transform 0.5s ease;
-  transition: background-color 0.5s ease, transform 0.5s ease;
+  -moz-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  -webkit-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  -ms-transition: border-bottom-color 0.5s ease, color 0.5s ease;
+  transition: border-bottom-color 0.5s ease, color 0.5s ease;
   position: absolute;
   top: 0;
   left: 0;
