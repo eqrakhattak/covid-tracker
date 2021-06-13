@@ -41,35 +41,35 @@ header,
 section {
   display: block;
 }
-body {
-  line-height: 1;
-  -webkit-text-size-adjust: none;
-}
 /* Basic */
 @-ms-viewport {
   width: device-width;
 }
-body {
-  -ms-overflow-style: scrollbar;
-}
-@media screen and (max-width: 480px) {
-  html,
-  body {
-    min-width: 320px;
-  }
-}
 html {
   box-sizing: border-box;
 }
-* ::before,
-* ::after {
+@media screen and (max-width: 480px) {
+  html {
+    min-width: 320px;
+  }
+}
+html * ::before,
+html * ::after {
   box-sizing: inherit;
 }
-body {
+html body {
+  line-height: 1;
+  -webkit-text-size-adjust: none;
+  -ms-overflow-style: scrollbar;
   background: #ffffff;
 }
-body .is-preload * ::before,
-body .is-preload * ::after {
+@media screen and (max-width: 480px) {
+  html body {
+    min-width: 320px;
+  }
+}
+html body .is-preload * ::before,
+html body .is-preload * ::after {
   -moz-animation: none !important;
   -webkit-animation: none !important;
   -ms-animation: none !important;
@@ -97,7 +97,7 @@ body {
     font-size: 12pt;
   }
 }
-a {
+body a {
   -moz-transition: border-bottom-color 0.2s ease, color 0.2s ease;
   -webkit-transition: border-bottom-color 0.2s ease, color 0.2s ease;
   -ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
@@ -106,35 +106,45 @@ a {
   color: #585858;
   border-bottom: dotted 1px rgba(88, 88, 88, 0.5);
 }
-a:hover {
+body a:hover {
   border-bottom-color: transparent;
   color: #f2849e !important;
 }
-p {
+body p {
   margin: 0 0 2em 0;
 }
-h1 {
+body h1 {
   font-size: 2.75em;
   font-weight: 700;
   line-height: 1.3;
   margin: 0 0 1em 0;
   letter-spacing: -0.035em;
 }
-h1 a {
-  color: inherit;
-}
 @media screen and (max-width: 736px) {
-  h1 {
+  body h1 {
     font-size: 2em;
     margin: 0 0 1em 0;
   }
 }
 @media screen and (max-width: 360px) {
-  h1 {
+  body h1 {
     font-size: 1.75em;
   }
 }
-h2 {
+@media screen and (max-width: 360px) {
+  body h1 {
+    font-size: 1.75em;
+  }
+}
+body h1 a {
+  color: inherit;
+}
+@media screen and (max-width: 980px) {
+  body h1 br {
+    display: none;
+  }
+}
+body h2 {
   font-weight: 900;
   line-height: 1.5;
   margin: 0 0 2em 0;
@@ -142,23 +152,39 @@ h2 {
   letter-spacing: 0.35em;
   font-size: 1.1em;
 }
-h2 a {
+@media screen and (max-width: 736px) {
+  body h2 {
+    font-size: 1em;
+  }
+}
+body h2 a {
   color: inherit;
 }
 @media screen and (max-width: 980px) {
-  h1 br,
-  h2 br {
+  body h2 br {
     display: none;
   }
 }
+/* Wrapper */
+#wrapper > * > .inner {
+  width: 100%;
+  max-width: 68em;
+  margin: 0 auto;
+  padding: 0 2.5em;
+}
 @media screen and (max-width: 736px) {
-  h2 {
-    font-size: 1em;
+  #wrapper > * > .inner {
+    padding: 0 1.25em;
   }
 }
 /* Header */
 #header {
   padding: 8em 0 0.1em 0;
+}
+@media screen and (max-width: 736px) {
+  #header {
+    padding: 4em 0 0.1em 0;
+  }
 }
 #header .logo {
   display: block;
@@ -183,8 +209,236 @@ h2 a {
   width: 2em;
   height: 2em;
 }
+/* Main */
+#main {
+  padding: 0em 0 6em 0 ;
+}
 @media screen and (max-width: 736px) {
-  #header {
-    padding: 4em 0 0.1em 0;
+  #main {
+    padding: 0em 0 4em 0 ;
   }
+}
+/* Tiles */
+.tiles {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  margin: -2.5em 0 0 -2.5em;
+  /*
+        body:not(.is-touch) .tiles article:hover > .image {
+            -moz-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+
+            body:not(.is-touch) .tiles article:hover > .image:before {
+                background-color: #333333;
+                opacity: 0.35;
+            }
+
+            body:not(.is-touch) .tiles article:hover > .image:after {
+                opacity: 0;
+            }
+        }
+
+    * + .tiles {
+        margin-top: 2em;
+    }
+
+    body.is-preload .tiles article {
+        -moz-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        transform: scale(0.9);
+        opacity: 0;
+    }
+*/
+}
+@media screen and (max-width: 1280px) {
+  .tiles {
+    margin: -1.25em 0 0 -1.25em;
+  }
+}
+@media screen and (max-width: 980px) {
+  .tiles {
+    margin: -2.5em 0 0 -2.5em;
+  }
+}
+@media screen and (max-width: 736px) {
+  .tiles {
+    margin: -1.25em 0 0 -1.25em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .tiles {
+    margin: 0;
+  }
+}
+.tiles article {
+  -moz-transition: -moz-transform 0.5s ease, opacity 0.5s ease;
+  -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+  -ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  position: relative;
+  width: calc(33.33333% - 2.5em);
+  margin: 2.5em 0 0 2.5em;
+  /*
+        -moz-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        transform: scale(0.9);
+        opacity: 0;
+*/
+}
+@media screen and (max-width: 1280px) {
+  .tiles article {
+    width: calc(33.33333% - 1.25em);
+    margin: 1.25em 0 0 1.25em;
+  }
+}
+@media screen and (max-width: 980px) {
+  .tiles article {
+    width: calc(50% - 2.5em);
+    margin: 2.5em 0 0 2.5em;
+  }
+}
+@media screen and (max-width: 736px) {
+  .tiles article {
+    width: calc(50% - 1.25em);
+    margin: 1.25em 0 0 1.25em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .tiles article {
+    width: 100%;
+    margin: 1.25em 0 0 0;
+  }
+}
+.tiles article :hover > .image {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+@media screen and (max-width: 736px) {
+  .tiles article :hover > .image {
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.tiles article :hover > .image ::before {
+  background-color: #333333;
+  opacity: 0.35;
+}
+.tiles article :hover > .image ::after {
+  opacity: 0;
+}
+.tiles article > .image {
+  -moz-transition: -moz-transform 0.5s ease;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  -ms-transition: -ms-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tiles article > .image img {
+  display: block;
+  width: 100%;
+}
+.tiles article > .image ::before {
+  pointer-events: none;
+  -moz-transition: background-color 0.5s ease, opacity 0.5s ease;
+  -webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
+  -ms-transition: background-color 0.5s ease, opacity 0.5s ease;
+  transition: background-color 0.5s ease, opacity 0.5s ease;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  z-index: 1;
+  opacity: 0.8;
+}
+.tiles article > .image ::after {
+  pointer-events: none;
+  -moz-transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
+  -ms-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.25;
+  z-index: 2;
+}
+.tiles article > a {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -moz-justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -moz-transition: background-color 0.5s ease, -moz-transform 0.5s ease;
+  -webkit-transition: background-color 0.5s ease, -webkit-transform 0.5s ease;
+  -ms-transition: background-color 0.5s ease, -ms-transform 0.5s ease;
+  transition: background-color 0.5s ease, transform 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  border-radius: 4px;
+  border-bottom: 0;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  z-index: 3;
+}
+.tiles article > a > :last-child {
+  margin: 0;
+}
+.tiles article > a :hover {
+  color: #ffffff !important;
+}
+.tiles article > a h2 {
+  margin: 0;
+}
+.tiles article .style1 > .image ::before {
+  background-color: #f2849e;
+}
+.tiles article .style2 > .image ::before {
+  background-color: #7ecaf6;
 }
