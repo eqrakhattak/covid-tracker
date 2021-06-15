@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = test_input($_POST["email"]);
     $message = test_input($_POST["message"]);
 
-    if(!isset($_POST['demo-category'])) {
+    if(!isset($_POST['category'])) {
         $errorMessage .= "<li>You forgot to select your Category!</li>";
     }
 
