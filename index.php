@@ -4,7 +4,7 @@
 
 	//check if the user is not logged in, then
 	
-	if(!isset($_SESSION['userid'])){
+	if(!isset($_SESSION['userid'])){ //|| $_SESSION['userid'] !== true){
 		$_SESSION['userid'] = "";
 		$_SESSION['username'] = "";
 	}
@@ -47,20 +47,17 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="index.html">Overview</a></li>
+							<li><a href="index.php">Overview</a></li>
 							<li><a href="symptoms.html">Symptoms</a></li>
 							<li><a href="prevention.html">Prevention</a></li>
 							<li><a href="get help.html">Treatment / Help</a></li>
-							
 							<li><a href="contact.html">Contact Us</a></li>
 							<?php if(isset($_SESSION['userid']) && !empty($_SESSION['userid'])) { 
 							?>
 							<li><a href="assets/php/logout.php">Logout</a></li>
 								<?php } else {?>
-									<li><a href="choice.php">SignIn</a></li>
+									<li><a href="login.php">SignIn</a></li>
 							<?php } ?>
-			
-
 						</ul>
 					</nav>
 
