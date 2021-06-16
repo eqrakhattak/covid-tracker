@@ -35,12 +35,12 @@
 }
 #register{	
 	z-index: 21;
-	opacity: 0;
+	
 }
 #login{
 	z-index: 22;
 }
-#toregister:target ~ #wrapper #register,
+/* #toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
 	z-index: 22;
 	-webkit-animation-name: fadeInLeft;
@@ -61,7 +61,7 @@
 	-ms-animation-name: fadeOutLeft;
 	-o-animation-name: fadeOutLeft;
 	animation-name: fadeOutLeft;
-}
+} 
 
 .animate{
 	-webkit-animation-duration: 0.5s;
@@ -84,3 +84,5 @@
 	animation-timing-function: ease;
 	animation-fill-mode: both;
 }
+
+*/
