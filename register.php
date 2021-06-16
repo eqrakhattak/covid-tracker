@@ -13,20 +13,18 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Login and Registration</title>
+        <title>Registration</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> 
         <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-        <!-- <link rel="stylesheet" type="text/css" href="assets/css/login.css" /> -->
-		<!-- <link rel="stylesheet" type="text/css" href="assets/css/animate-login.css" /> -->
+        <link rel="stylesheet" type="text/css" href="assets/css/login.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/animate-login.css" />
     </head>
     <body>
         <div class="container">
             <section>				
-
-                    <!-- <a id="toregister"></a>
-                    <a id="tologin"></a> -->
+                <div id="inner-container" >
                     <div id="wrapper">
-                        <div id="register" >
+                        <div id="register">
                             <form  action="assets/php/register-config.php" method="POST" autocomplete="on"> 
                                 <h1> Sign up </h1>
                                 <p> 
@@ -45,6 +43,10 @@
                                     <label for="signup-password-confirm">Confirm Password </label>
                                     <input id="signup-password-confirm" name="confirm-password" required="required" type="password" placeholder="eg. X8df!90EO"/>
                                 </p>
+                                <p>
+                                    <input type="checkbox" name="isadmin" id="isadmin" value="isadmin" checked/> 
+									<label for="isadmin">Are you an admin?</label>
+                                </p>
                                 <p> 
 									<input type="submit" value="Sign up" name="submit" class="button primary fit"/>
                                     <small style="color: red;"><?php print $error; ?></small> 
@@ -56,7 +58,7 @@
                             </form>
                         </div>
                     </div>
-
+                </div>
             </section>
         </div>
     </body>

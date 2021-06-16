@@ -3,13 +3,13 @@
 	require_once "config.php";
 	require_once "session.php";
 
-function debug_to_console($data) {
-	$output = $data;
-	if (is_array($output))
-		$output = implode(',', $output);
+// function debug_to_console($data) {
+// 	$output = $data;
+// 	if (is_array($output))
+// 		$output = implode(',', $output);
 
-	echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-}
+// 	echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+// }
 
 
 
@@ -24,40 +24,46 @@ function debug_to_console($data) {
 	$_SESSION['error'] = '';
 	$dbTable = '';
 
-	if($_SESSION['Admin']){
-		$dbTable = 'admins';
-	}
-	if($_SESSION['User']){
-		$dbTable = 'users';
+	// if($_SESSION['Admin']){
+	// 	$dbTable = 'admins';
+	// }
+	// if($_SESSION['User']){
+	// 	$dbTable = 'users';
+	// }
+    
+	if(!empty($_POST['isadmin'])){
+        $dbTable = $_SESSION['tbName'] = "admins";
+    }
+	else{
+		$dbTable = $_SESSION['tbName'] = "users";
 	}
 
-
-	if($query = $db->prepare("SELECT * FROM users WHERE email = ?")){
+	if($query = $db->prepare("SELECT * FROM $dbTable WHERE email = ?")){
 		$query -> bind_param('s', $email);
 		$query -> execute();
 		$query -> store_result();
+
 		if($query ->num_rows >0){
 			$_SESSION['error'] .= 'The email address is already registered.';
 			header("Location: /CovidTracker/register.php");
-			// header("Location: #");
 		}
 		else{
 			if (strlen($password)<6 ){
 				$_SESSION['error'] .= 'Password must have atleast 6 characters.';
-				header("Location: /CovidTracker/login.php#toregister");
+				header("Location: /CovidTracker/register.php");
 			}
 			if(empty($confirm_password)){
 				$_SESSION['error'] .= 'Please enter confirm password.';
-				header("Location: /CovidTracker/login.php#toregister");
+				header("Location: /CovidTracker/register.php");
 			}
 			else{
-				if (empty($error) || ($password != $confirm_password)){
+				if (empty($error) && ($password != $confirm_password)){
 					$_SESSION['error'] .= 'Password did not match.';
-					header("Location: /CovidTracker/login.php#toregister");
+					header("Location: /CovidTracker/register.php");
 				}
 			}
 			if (empty($error)){
-				$insertQuery = $db -> prepare("INSERT INTO users (username, email, password) VALUES (?,?,?);");
+				$insertQuery = $db -> prepare("INSERT INTO $dbTable (username, email, password) VALUES (?,?,?);");
 				$insertQuery -> bind_param("sss", $username, $email, $password_hash);
 				$result = $insertQuery -> execute();
 				
@@ -67,7 +73,7 @@ function debug_to_console($data) {
 				}
 				else{
 					$_SESSION['error'] .= 'Something Went Wrong!';
-					header("Location: /CovidTracker/login.php#toregister");
+					header("Location: /CovidTracker/register.php");
 				}
 				$insertQuery->close();
 			}
