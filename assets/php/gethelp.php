@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = test_input($_POST["message"]);
 
     if(!isset($_POST['category'])) {
-        $errorMessage .= "<li>You forgot to select your Category!</li>";
+        $error .= "<li>You forgot to select your Category!</li>";
     }
 
     if(isset($_POST['submit'])){//to run PHP script on submit
