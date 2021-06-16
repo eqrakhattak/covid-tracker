@@ -2,11 +2,10 @@
 
 	session_start();
 
-	//check if the user is not logged in, then
-
-	if(!isset($_SESSION['userid']) || $_SESSION['userid'] !== true){
-		$_SESSION['username'] = "";
-	}
+	// //check if the user is not logged in, then
+	// if(!isset($_SESSION['userid']) || $_SESSION['userid'] !== true){
+	// 	$_SESSION['username'] = "";
+	// }
 
 ?>
 
@@ -46,12 +45,17 @@
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="index.html">Overview</a></li>
+							<li><a href="index.php">Overview</a></li>
 							<li><a href="symptoms.html">Symptoms</a></li>
 							<li><a href="prevention.html">Prevention</a></li>
 							<li><a href="get help.html">Treatment / Help</a></li>
-							<li><a href="choice.php">SignIn</a></li>
 							<li><a href="contact.html">Contact Us</a></li>
+                            <?php if(isset($_SESSION['userid']) && !empty($_SESSION['userid'])) { 
+							?>
+							<li><a href="assets/php/logout.php">Logout</a></li>
+								<?php } else {?>
+									<li><a href="login.php">SignIn</a></li>
+							<?php } ?>
 						</ul>
 					</nav>
 
@@ -59,7 +63,7 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>Hi <?php echo $_SESSION['username'] ?>, Welcome to admin panel!</h1>
+								<h1>Hi <?php echo $_SESSION['username']; ?>, Welcome to admin panel!</h1>
 								<p>Select the module you wanna see:</p>
 							</header>
 							<section class="tiles">
@@ -81,27 +85,21 @@
 								</article>
 								<article class="style5">
 									<span class="image">
-										<img src="images/France.png" alt="" />
+										<img src="images/admin.png" alt="" />
 									</span>
-									<a href="france.html">
-										<h2>France</h2>
-										<div class="content">
-											<p>Cases : 5642359<br>Deaths : 104706<br>Recovered : 4590568</p>
-										</div>
+									<a href="assets/php/messages.php">
+										<h2>Messages</h2>
 									</a>
 								</article>
 								<article class="style6">
 									<span class="image">
-										<img src="images/Russia.png" alt="" />
+										<img src="images/admin.png" alt="" />
 									</span>
-									<a href="russia.html">
-										<h2>Russia</h2>
-										<div class="content">
-											<p>Cases : 4814558<br>Deaths : 110520<br>Recovered : 4436583</p>
-										</div>
+									<a href="assets/php/add-place.php">
+										<h2>Places</h2>
 									</a>
 								</article>
-								<article class="style2">
+								<!-- <article class="style2">
 									<span class="image">
 										<img src="images/Italy.png" alt="" />
 									</span>
@@ -166,7 +164,7 @@
 											<p>Cases : 14446541<br>Deaths : 395324<br>Recovered : 12992442</p>
 										</div>
 									</a>
-								</article>
+								</article> -->
 							</section>
 						</div>
 					</div>
