@@ -3,11 +3,12 @@
 	session_start();
 
 	//check if the user is not logged in, then
-
-	if(!isset($_SESSION['userid']) || $_SESSION['userid'] !== true){
+	
+	if(!isset($_SESSION['userid'])){
+		$_SESSION['userid'] = "";
 		$_SESSION['username'] = "";
 	}
-
+	
 ?>
 
 <!DOCTYPE HTML>
@@ -50,8 +51,16 @@
 							<li><a href="symptoms.html">Symptoms</a></li>
 							<li><a href="prevention.html">Prevention</a></li>
 							<li><a href="get help.html">Treatment / Help</a></li>
-							<li><a href="choice.html">SignIn</a></li>
+							
 							<li><a href="contact.html">Contact Us</a></li>
+							<?php if(isset($_SESSION['userid']) && !empty($_SESSION['userid'])) { 
+							?>
+							<li><a href="assets/php/logout.php">Logout</a></li>
+								<?php } else {?>
+									<li><a href="choice.php">SignIn</a></li>
+							<?php } ?>
+			
+
 						</ul>
 					</nav>
 
@@ -59,7 +68,7 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>Hi <?php echo $_SESSION['name'] ?>, See the realtime Pakistan and Worldwide<br />
+								<h1>Hi <?php echo $_SESSION['username']; ?>, See the realtime Pakistan and Worldwide<br />
 								situation of <a href="https://en.wikipedia.org/wiki/COVID-19">COVID-19</a>.</h1>
 								<p>Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment.</p>
 							</header>
