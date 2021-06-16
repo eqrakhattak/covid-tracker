@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -33,24 +35,18 @@
 									<span class="image">
 										<img src="images/user.png" alt="" />
 									</span>
-									<a href="login.html">
+									<a href="login.php?q=admin" >
 										<h2>Admin</h2>
-										<?php 
-											$_SESSION['Admin'] = true; 
-											$_SESSION['User'] = false; 
-										?>
+								
 									</a>
 								</article>
 								<article class="style2">
 									<span class="image">
 										<img src="images/user.png" alt="" />
 									</span>
-									<a href="login.html">
+									<a href="login.php">
 										<h2>User</h2>
-										<?php 
-											$_SESSION['User'] = true; 
-											$_SESSION['Admin'] = false; 
-										?>
+										
 									</a>
 								</article>
                             </section>

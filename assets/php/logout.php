@@ -5,7 +5,7 @@
     //destroy session
     if(session_destroy()){
         //redirect to the index page
-        header('Location: index.html');
+        header('Location: /CovidTracker/index.php');
         exit;
     }
 
