@@ -1,12 +1,5 @@
 <?php
-
 	session_start();
-
-	// //check if the user is not logged in, then
-	// if(!isset($_SESSION['userid']) || $_SESSION['userid'] !== true){
-	// 	$_SESSION['username'] = "";
-	// }
-
 ?>
 
 <!DOCTYPE HTML>
@@ -27,7 +20,7 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="index.html" class="logo">
+								<a href="index.php" class="logo">
 									<span class="symbol"><img src="images/logo.png" alt="" /></span><span class="title">Covid Tracker</span>
 								</a>
 
@@ -48,13 +41,16 @@
 							<li><a href="index.php">Overview</a></li>
 							<li><a href="symptoms.html">Symptoms</a></li>
 							<li><a href="prevention.html">Prevention</a></li>
-							<li><a href="get help.html">Treatment / Help</a></li>
-							<li><a href="contact.html">Contact Us</a></li>
-                            <?php if(isset($_SESSION['userid']) && !empty($_SESSION['userid'])) { 
+							<li><a href="get-help.php">Treatment / Help</a></li>
+							<li><a href="contact-us.php">Contact Us</a></li>
+							<?php 
+							if(isset($_SESSION['userid']) && !empty($_SESSION['userid'])) { 
 							?>
-							<li><a href="assets/php/logout.php">Logout</a></li>
-								<?php } else {?>
-									<li><a href="login.php">SignIn</a></li>
+								<li><a href="assets/php/logout.php">Logout</a></li>
+							<?php 
+							} else {
+							?>
+								<li><a href="login.php">SignIn</a></li>
 							<?php } ?>
 						</ul>
 					</nav>
@@ -71,7 +67,7 @@
 									<span class="image">
 										<img src="images/admin.png" alt="" />
 									</span>
-									<a href="users-table.html">
+									<a href="users.php">
 										<h2>Users</h2>
 									</a>
 								</article>
@@ -79,7 +75,7 @@
 									<span class="image">
 										<img src="images/admin.png" alt="" />
 									</span>
-									<a href="help-info.html">
+									<a href="help-info.php">
 										<h2>Help Info</h2>
 									</a>
 								</article>
@@ -87,7 +83,7 @@
 									<span class="image">
 										<img src="images/admin.png" alt="" />
 									</span>
-									<a href="assets/php/messages.php">
+									<a href="messages.php">
 										<h2>Messages</h2>
 									</a>
 								</article>
@@ -95,76 +91,10 @@
 									<span class="image">
 										<img src="images/admin.png" alt="" />
 									</span>
-									<a href="assets/php/add-place.php">
-										<h2>Places</h2>
+									<a href="add-place.php">
+										<h2>Countries</h2>
 									</a>
 								</article>
-								<!-- <article class="style2">
-									<span class="image">
-										<img src="images/Italy.png" alt="" />
-									</span>
-									<a href="italy.html">
-										<h2>Italy</h2>
-										<div class="content">
-											<p>Cases : 4035617<br>Deaths : 121033<br>Recovered : 3484042</p>
-										</div>
-									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/Germany.png" alt="" />
-									</span>
-									<a href="germany.html">
-										<h2>Germany</h2>
-										<div class="content">
-											<p>Cases : 3405610<br>Deaths : 83678<br>Recovered : 3012100</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="images/Canada.png" alt="" />
-									</span>
-									<a href="canada.html">
-										<h2>Canada</h2>
-										<div class="content">
-											<p>Cases : 1224314<br>Deaths : 24257<br>Recovered : 1117284</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/Australia.png" alt="" />
-									</span>
-									<a href="australia.html">
-										<h2>Australia</h2>
-										<div class="content">
-											<p>Cases : 29813<br>Deaths : 910<br>Recovered : 28599</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/Kuwait.png" alt="" />
-									</span>
-									<a href="kwait.html">
-										<h2>Kuwait</h2>
-										<div class="content">
-											<p>Cases : 273991<br>Deaths : 1563<br>Recovered : 257261</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/Brazil.png" alt="" />
-									</span>
-									<a href="brazil.html">
-										<h2>Brazil</h2>
-										<div class="content">
-											<p>Cases : 14446541<br>Deaths : 395324<br>Recovered : 12992442</p>
-										</div>
-									</a>
-								</article> -->
 							</section>
 						</div>
 					</div>
