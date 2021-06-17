@@ -29,7 +29,7 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="index.html" class="logo">
+								<a href="index.php" class="logo">
 									<span class="symbol"><img src="images/logo.png" alt="" /></span><span class="title">Covid Tracker</span>
 								</a>
 
@@ -50,13 +50,16 @@
 							<li><a href="index.php">Overview</a></li>
 							<li><a href="symptoms.html">Symptoms</a></li>
 							<li><a href="prevention.html">Prevention</a></li>
-							<li><a href="get help.html">Treatment / Help</a></li>
-							<li><a href="contact.html">Contact Us</a></li>
-							<?php if(isset($_SESSION['userid']) && !empty($_SESSION['userid'])) { 
+							<li><a href="get-help.php">Treatment / Help</a></li>
+							<li><a href="contact-us.php">Contact Us</a></li>
+							<?php 
+							if(isset($_SESSION['userid']) && !empty($_SESSION['userid'])) { 
 							?>
-							<li><a href="assets/php/logout.php">Logout</a></li>
-								<?php } else {?>
-									<li><a href="login.php">SignIn</a></li>
+								<li><a href="assets/php/logout.php">Logout</a></li>
+							<?php 
+							} else {
+							?>
+								<li><a href="login.php">SignIn</a></li>
 							<?php } ?>
 						</ul>
 					</nav>

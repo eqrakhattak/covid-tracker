@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <link rel="stylesheet" type="text/css" href="assets/less/test.css" />
+        <script>
+            function array_demo() {
+                var arr = new Array();
+                arr[0]="HTML";
+                arr[1]="CSS";
+                arr[2]="LESS";
+                arr[3]="JS";
+                arr[4]="PHP";
+
+                document.getElementById("display-array").innerHTML = "Length of the array : " + arr.length;
+                
+                for(i=0;i<5;i++){
+                    document.write(arr[i]);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque placeat libero nobis iure id alias. Natus quod nihil, suscipit consectetur accusantium id quam est praesentium soluta reiciendis, aliquid ipsum? Doloribus.
+        </p>
+        <button onclick="array_demo()">Show Me</button>
+        <p id="display-array">
+
+        </p>
+    </body>
+</html>
