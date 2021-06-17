@@ -3,16 +3,6 @@
 	require_once "config.php";
 	require_once "session.php";
 
-// function debug_to_console($data) {
-// 	$output = $data;
-// 	if (is_array($output))
-// 		$output = implode(',', $output);
-
-// 	echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-// }
-
-
-
 	if($_SERVER["REQUEST_METHOD"] =="POST" && isset($_POST['submit'])){
 
 	$username = trim($_POST['username']);
@@ -20,22 +10,15 @@
 	$password=trim($_POST['password']);
 	$confirm_password = trim($_POST['confirm-password']);
 	$password_hash = md5($password);
-	//password_hash($password, PASSWORD_BCRYPT);
+
 	$_SESSION['error'] = '';
 	$dbTable = '';
-
-	// if($_SESSION['Admin']){
-	// 	$dbTable = 'admins';
-	// }
-	// if($_SESSION['User']){
-	// 	$dbTable = 'users';
-	// }
     
 	if(!empty($_POST['isadmin'])){
-        $dbTable = $_SESSION['tbName'] = "admins";
+        $dbTable = "admins";
     }
 	else{
-		$dbTable = $_SESSION['tbName'] = "users";
+		$dbTable = "users";
 	}
 
 	if($query = $db->prepare("SELECT * FROM $dbTable WHERE email = ?")){
@@ -78,12 +61,8 @@
 				$insertQuery->close();
 			}
 		}
-
 		$query->close();
-
 	}
-
-	
 	mysqli_close($db);
 }
 

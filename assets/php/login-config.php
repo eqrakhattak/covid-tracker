@@ -3,27 +3,6 @@
 	require_once "config.php";
 	require_once "session.php";
 
-	// $choice = $_GET['q'];
-	
-	
-	// if(isset($_SESSION['Admin'])){
-	// 	$dbTable = 'admins';
-	// }
-	// if(isset($_SESSION['User'])){
-	// 	$dbTable = 'users';
-	// }
-
-	// echo $dbTable;
-
-	// function debug_to_console($data) {
-	// 	$output = $data;
-	// 	if (is_array($output))
-	// 		$output = implode(',', $output);
-	
-	// 	echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-	// }
-	// debug_to_console("Saad")
-
 
 	if($_SERVER["REQUEST_METHOD"] =="POST" && isset($_POST['submit'])){
 		
@@ -95,8 +74,8 @@
 					// }
 				}
 				else{
-						$_SESSION['error'] .= 'The password or email  is not valid.';
-						header("Location: /CovidTracker/login.php");	
+					$_SESSION['error'] .= 'The password or email  is not valid.';
+					header("Location: /CovidTracker/login.php");	
 				}
 			
 				
