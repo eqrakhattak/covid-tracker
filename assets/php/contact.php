@@ -9,25 +9,16 @@
         $email = trim($_POST['email']);
         $message=trim($_POST['message']);
 
-        if(!isset($_POST['category'])) {
-            $error .= "You forgot to select your Category!";
-        }else{
-            $category = trim($_POST['category']);
-        }
-
-        //how to select radio
-        $bp = trim($_POST['priority']);
-
         $_SESSION['error'] = '';
 
         if (empty($error)){
-            $insertQuery = $db -> prepare("INSERT INTO help (name, email, category, bp, message) VALUES (?,?,?,?,?);");
-            $insertQuery -> bind_param("sssss", $name, $email, $category, $bp, $message);
+            $insertQuery = $db -> prepare("INSERT INTO contacts (name, email, message) VALUES (?,?,?);");
+            $insertQuery -> bind_param("sss", $name, $email, $message);
             $result = $insertQuery -> execute();
                     
             if($result){
                 $_SESSION['error'] .= 'Your message has been sent!';
-                header("Location: /CovidTracker/get-help.php");
+                header("Location: /CovidTracker/contact-us.php");
             }
             else{
                 $_SESSION['error'] .= 'Something Went Wrong!';
@@ -39,7 +30,3 @@
     }
 
 ?>
-
-
-
-
