@@ -12,6 +12,7 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 		<script>
 			$(document).ready(function(){
 				$('.search-box input[type="text"]').on("keyup input", function(){
@@ -19,7 +20,7 @@
 					var inputVal = $(this).val();
 					var resultDropdown = $(this).siblings(".result");
 					if(inputVal.length){
-						$.get("backend-search.php", {term: inputVal}).done(function(data){
+						$.get("assets/php/backend-search.php", {term: inputVal}).done(function(data){
 							// Display the returned data in browser
 							resultDropdown.html(data);
 						});
@@ -32,6 +33,15 @@
 				$(document).on("click", ".result p", function(){
 					$(this).parents(".search-box").find('input[type="text"]').val($(this).text());
 					$(this).parent(".result").empty();
+				});
+			});
+
+			$(document).ready(function(){
+				$("#searchit").on("keyup", function() {
+					var value = $(this).val().toLowerCase();
+					$("#countries tr").filter(function() {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+					});
 				});
 			});
 		</script>
@@ -66,7 +76,7 @@
 								</div>
 								<form method="POST" action="">
 									<div class="search-box">
-										<input type="text" autocomplete="off" name="search" placeholder="Search country..." />
+										<input id="searchit" type="text" autocomplete="off" name="search" placeholder="Search country..." />
 										<div class="result"></div>
 									</div>	
 								</form>
@@ -75,14 +85,7 @@
                             <section>
                                 <div class="table-wrapper">
 									<?php
-										if(search-box.empty()){
-											$query = "SELECT * from places limit 100;";
-										}
-										else{
-											$country=$_POST['search'];
-											$query = "SELECT * from places WHERE name='$country';";
-										}
-
+										$query = "SELECT * from places limit 100;";
 										$result = $db->query($query);
 									?>
 										<table>
@@ -96,7 +99,7 @@
 													<th>Actions</th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody id="countries">
 												<?php
 													while($row = $result->fetch_array()){
 														echo "<tr>";
