@@ -1,5 +1,7 @@
 <?php
 
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/CovidTracker/assets/php/config.php';
+	
 	session_start();
 
 	//check if the user is not logged in, then

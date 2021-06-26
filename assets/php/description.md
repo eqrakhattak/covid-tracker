@@ -3,7 +3,7 @@
 Make a folder named 'CovidTracker' in C:/xampp/htdocs/
 go to the folder and paste the project in there for the PHP files to work with the database on phpmyadmin. 
 
-#Code for debugging PHP
+# Code for debugging PHP
 
 function debug_to_console($data) {
 	$output = $data;
