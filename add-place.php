@@ -10,6 +10,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.search-box input[type="text"]').on("keyup input", function(){
+					/* Get input value on change */
+					var inputVal = $(this).val();
+					var resultDropdown = $(this).siblings(".result");
+					if(inputVal.length){
+						$.get("backend-search.php", {term: inputVal}).done(function(data){
+							// Display the returned data in browser
+							resultDropdown.html(data);
+						});
+					} else{
+						resultDropdown.empty();
+					}
+				});
+				
+				// Set search input value on click of result item
+				$(document).on("click", ".result p", function(){
+					$(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+					$(this).parent(".result").empty();
+				});
+			});
+		</script>
+
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -31,14 +57,32 @@
 					<div id="main">
 						<div class="inner">
 							<h1>Countries</h1>
-							<ul class="actions">
-									<li><a href="assets/php/create.php" class="button large"><i class="fa fa-plus"></i> Add a Country</a></li>
-							</ul>
+
+							<div class="row">
+								<div>
+									<ul class="actions">
+										<li><a href="assets/php/create.php" class="button large"><i class="fa fa-plus"></i> Add a Country</a></li>
+									</ul>
+								</div>
+								<form method="POST" action="">
+									<div class="search-box">
+										<input type="text" autocomplete="off" name="search" placeholder="Search country..." />
+										<div class="result"></div>
+									</div>	
+								</form>
+							</div>
                             <!-- Table -->
                             <section>
                                 <div class="table-wrapper">
 									<?php
-										$query = "SELECT * from places limit 100;";
+										if(search-box.empty()){
+											$query = "SELECT * from places limit 100;";
+										}
+										else{
+											$country=$_POST['search'];
+											$query = "SELECT * from places WHERE name='$country';";
+										}
+
 										$result = $db->query($query);
 									?>
 										<table>
